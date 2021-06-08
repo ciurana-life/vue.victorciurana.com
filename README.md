@@ -32,5 +32,16 @@ npm run test:e2e
 npm run lint
 ```
 
+### Serving the builded files
+To serve the app locally we need serve installed:
+```
+sudo npm install i -g serve
+```
+
+```
+serve -s dist
+```
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
