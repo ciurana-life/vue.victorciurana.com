@@ -23,5 +23,5 @@ jobs:
       # Build & Upload
       - name: Build
         run: npm install && npm run build
-      - name: Upload
-        run: ssh admin@${{ secrets.SSH_HOST }} "touch /home/admin/vue.victorciurana.com/test.txt"
+      - name: Deploy with rsync
+        run: rsync -avz ./dist/ admin@${{ secrets.SSH_HOST }}:/home/admin/vue.victorciurana.com/dist/
