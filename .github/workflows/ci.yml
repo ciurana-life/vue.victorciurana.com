@@ -1,11 +1,17 @@
 
 name: CI
 
-on: [push]
+on:
+  pull_request:
+    types: [closed]
 
 jobs:
-  ssh-test:
+  build:
+
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    name: Test, Build & Deploy
+
     steps:
       # Set up SSH
       - name: Install SSH
@@ -19,6 +25,13 @@ jobs:
       # Checkout
       - name: Checkout
         uses: actions/checkout@v2
+
+      # Test before upload
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
 
       # Build & Upload
       - name: Build
