@@ -2,7 +2,7 @@ describe('Home page to post blog', () => {
 
   it('NAvigate the simple app', () => {
     // Home displays H1
-    cy.visit('http://localhost:8080/')
+    cy.visit('/')
     cy.contains('h1', 'Victor Ciurana')
 
     // Click on a post to read
